@@ -3,6 +3,7 @@ package com.example.news.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -115,13 +116,13 @@ private fun ProgressIndicator(state: State.Loading){
  internal fun Article(
     @PreviewParameter(ArticlePreviewProvider::class, limit = 1)article: ArticleUI,
  ) {
-    Row {
+    Row(Modifier.padding(bottom = 4.dp)) {
         article.imageUrl?.let { imageUrl ->
             AsyncImage(
-                model = article.imageUrl,
+                model = imageUrl,
                 contentDescription = stringResource(R.string.content_desc_item_article_image),
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.heightIn(150.dp).widthIn(max = 150.dp)
+                modifier = Modifier.size(150.dp)
             )
         }
         Spacer(modifier = Modifier.size(4.dp))
