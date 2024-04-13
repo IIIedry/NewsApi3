@@ -17,12 +17,14 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.example.news.uikit.NewsTheme
+import coil.compose.AsyncImage
 
 @Composable
  fun NewsMainScreen( ){
@@ -110,6 +112,8 @@ private fun ProgressIndicator(state: State.Loading){
     @PreviewParameter(ArticlePreviewProvider::class, limit = 1)article: ArticleUI,
  ) {
 Column(modifier = Modifier.padding(8.dp)){
+    AsyncImage(model = article.imageUrl,
+        contentDescription = stringResource(R.string.content_desc_item_article_image))
     Text(
         text = article.title ?: "No TITLE",
         style = NewsTheme.typography.headlineMedium,
