@@ -10,5 +10,5 @@ data class ResponseDTO<E>(
     @SerialName("totalResults")
     val totalResults: Int,
     @SerialName("articles")
-    val articles: List<E>
+    val articles: List<E>,
 )

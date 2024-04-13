@@ -24,12 +24,12 @@ data class ArticleDBO(
     val publishedAt: Date,
     @ColumnInfo("content")
     val content: String,
-     @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Long,
 )
 
 
 data class Source(
     val id: String?,
-    val name: String?
+    val name: String?,
 )
