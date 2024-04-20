@@ -15,6 +15,8 @@ plugins {
 
 }
 
+
+
 allprojects.onEach { project ->
     project.afterEvaluate {
         with(project.plugins) {
