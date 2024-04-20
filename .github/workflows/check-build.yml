@@ -24,8 +24,11 @@ jobs:
               shell: bash
               run: ./gradlew detekt
 
-            -   name: Change wrapper permissions
+            -   name: Grant execute permission to Gradle wrapper
                 run: chmod +x ./gradlew
+
+            -   name: Build with Gradle
+                run: ./gradlew build
 
             - name: Publish Detekt reports
               uses: jwgmeligmeyling/checkstyle-github-action@master
