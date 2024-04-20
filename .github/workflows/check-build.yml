@@ -5,8 +5,7 @@ jobs:
     Detekt:
         runs-on: ubuntu-latest
         steps:
-            -   name: Change wrapper permissions
-                run: chmod +x ./gradlew
+
 
             - name: Checkout
               uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -24,6 +23,9 @@ jobs:
             - name: Detekt
               shell: bash
               run: ./gradlew detekt
+
+            -   name: Change wrapper permissions
+                run: chmod +x ./gradlew
 
             - name: Publish Detekt reports
               uses: jwgmeligmeyling/checkstyle-github-action@master
