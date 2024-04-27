@@ -23,7 +23,6 @@ internal class NewsMainVIewModel @Inject constructor(
         TODO("Will not be implemented")
     }
 
-
     private fun RequestResult<List<ArticleUI>>.toState(): State {
         return when (this) {
             is RequestResult.Error -> State.Error(data)
@@ -31,14 +30,11 @@ internal class NewsMainVIewModel @Inject constructor(
             is RequestResult.Success -> State.Success(data)
         }
     }
-
 }
-
 
 internal sealed class State(val articles: List<ArticleUI>?) {
     data object None : State(articles = null)
     class Loading(articles: List<ArticleUI>? = null) : State(articles)
     class Error(articles: List<ArticleUI>? = null) : State(articles)
     class Success(articles: List<ArticleUI>) : State(articles)
-
 }

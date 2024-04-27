@@ -37,7 +37,6 @@ fun NewsMainScreen() {
     NewsMainScreen(viewModel = viewModel())
 }
 
-
 @Composable
 internal fun NewsMainScreen(viewModel: NewsMainVIewModel) {
     val state by viewModel.state.collectAsState()
@@ -60,7 +59,6 @@ private fun NewsMainContent(currentState: State) {
         if (currentState.articles != null) {
             Articles(articles = currentState.articles)
         }
-
     }
 }
 
@@ -71,14 +69,15 @@ private fun ErrorMessage(state: State.Error) {
         Modifier
             .fillMaxWidth()
             .background(NewsTheme.colorScheme.error)
-            .padding(8.dp), contentAlignment = Alignment.Center
+            .padding(8.dp),
+        contentAlignment = Alignment.Center
 
     ) {
         Text(text = "Error during update", color = NewsTheme.colorScheme.onError)
     }
 }
 
-
+@Suppress("UnusedParameter")
 @Composable
 private fun ProgressIndicator(state: State.Loading) {
     Box(
@@ -90,7 +89,6 @@ private fun ProgressIndicator(state: State.Loading) {
         CircularProgressIndicator()
     }
 }
-
 
 @Preview
 @Composable
@@ -105,7 +103,6 @@ private fun Articles(
         }
     }
 }
-
 
 @Preview
 @Composable
@@ -150,27 +147,29 @@ internal fun Article(
 private class ArticlePreviewProvider : PreviewParameterProvider<ArticleUI> {
     override val values = sequenceOf(
         ArticleUI(
-            1, "Android Studio Iguana is Stable!",
+            1,
+            "Android Studio Iguana is Stable!",
             "New stable version on Android IDE has been realized",
             imageUrl = null,
             url = "",
         ),
 
         ArticleUI(
-            2, "Gemini 1.5 Release!",
+            2,
+            "Gemini 1.5 Release!",
             "Upgraded version of Google AI is available",
             imageUrl = null,
             url = "",
         ),
 
         ArticleUI(
-            3, "Shape animations (10 min)",
+            3,
+            "Shape animations (10 min)",
             "How to use shape transform animations in Compose",
             imageUrl = null,
             url = "",
         ),
     )
-
 }
 
 private class ArticlesPreviewProvider : PreviewParameterProvider<List<ArticleUI>> {
@@ -180,5 +179,4 @@ private class ArticlesPreviewProvider : PreviewParameterProvider<List<ArticleUI>
     override val values = sequenceOf(
         articleProvider.values.toList()
     )
-
 }

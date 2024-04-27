@@ -29,10 +29,8 @@ interface NewsApi {
         @Query("pageSize") @IntRange(from = 0, to = 100) pageSize: Int = 100,
         @Query("page") @IntRange(from = 1) page: Int = 1,
 
-        ): Result<ResponseDTO<ArticleDTO>>
-
+    ): Result<ResponseDTO<ArticleDTO>>
 }
-
 
 fun NewsApi(
     baseUrl: String,
@@ -40,7 +38,6 @@ fun NewsApi(
     okHttpClient: OkHttpClient? = null,
     json: Json = Json,
 ): NewsApi {
-
     return retrofit(baseUrl, apiKey, okHttpClient, json).create()
 }
 
@@ -55,10 +52,8 @@ private fun retrofit(
     baseUrl: String,
     apiKey: String,
     okHttpClient: OkHttpClient? = null,
-    json: Json,
+    @Suppress("UnusedParameter") json: Json,
 ): Retrofit {
-
-
     val jsonConverterFactory = json1.asConverterFactory("application/json".toMediaType())
 
     val modifiedOkHttpClient: OkHttpClient =
@@ -66,12 +61,8 @@ private fun retrofit(
             NewsApiKeyInterceptor(apiKey)
         ).build()
 
-
     return Retrofit.Builder().baseUrl(baseUrl)
         .addConverterFactory(jsonConverterFactory)
         .addCallAdapterFactory(ResultCallAdapterFactory.create())
         .client(modifiedOkHttpClient).build()
 }
-
-
-
