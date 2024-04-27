@@ -1,9 +1,9 @@
 package com.example.newssearchapphometask3
 
 import android.content.Context
-import com.example.common.AndroidLogcatLogger
 import com.example.common.AppDispatchers
 import com.example.common.Logger
+import com.example.common.androidLogcatLogger
 import com.example.database.NewsDatabase
 import com.example.newsapi.NewsApi
 import dagger.Module
@@ -17,7 +17,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     @Provides
     @Singleton
     fun provideNewsApi(okHttpClient: OkHttpClient?): NewsApi {
@@ -25,13 +24,14 @@ object AppModule {
             baseUrl = BuildConfig.NEWS_API_BASE_URL,
             apiKey = BuildConfig.NEWS_API_KEY,
             okHttpClient = okHttpClient
-
         )
     }
 
     @Provides
     @Singleton
-    fun provideNewsDatabase(@ApplicationContext context: Context): NewsDatabase {
+    fun provideNewsDatabase(
+        @ApplicationContext context: Context
+    ): NewsDatabase {
         return NewsDatabase(context)
     }
 
@@ -40,5 +40,5 @@ object AppModule {
     fun provideAppCoroutineDispatchers(): AppDispatchers = AppDispatchers()
 
     @Provides
-    fun provideLogger(): Logger = AndroidLogcatLogger()
+    fun provideLogger(): Logger = androidLogcatLogger()
 }

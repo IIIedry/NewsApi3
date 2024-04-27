@@ -13,7 +13,6 @@ data class Article(
     val publishedAt: Date,
     val content: String,
 ) {
-
     companion object {
         const val ID_NONE = 0L
     }
@@ -21,5 +20,5 @@ data class Article(
 
 data class Source(
     val id: String?,
-    val name: String?,
+    val name: String?
 )

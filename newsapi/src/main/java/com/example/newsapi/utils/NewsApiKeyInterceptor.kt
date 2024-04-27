@@ -3,13 +3,15 @@ package com.example.newsapi.utils
 import okhttp3.Interceptor
 import okhttp3.Response
 
-internal class NewsApiKeyInterceptor(private val apiKey: String) : Interceptor {
+internal class NewsApiKeyInterceptor(
+    private val apikey: String
+) : Interceptor {
     @Suppress("SuspiciousIndentation")
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
             .url(
                 chain.request().url.newBuilder()
-                    .addQueryParameter("apiKey", apiKey)
+                    .addQueryParameter("apiKey", apikey)
                     .build()
             )
             .build()

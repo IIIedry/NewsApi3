@@ -38,7 +38,7 @@ fun NewsMainScreen() {
 }
 
 @Composable
-internal fun NewsMainScreen(viewModel: NewsMainVIewModel) {
+internal fun NewsMainScreen(viewModel: NewsMainViewModel) {
     val state by viewModel.state.collectAsState()
     val currentState = state
     if (state != State.None) {
@@ -71,13 +71,12 @@ private fun ErrorMessage(state: State.Error) {
             .background(NewsTheme.colorScheme.error)
             .padding(8.dp),
         contentAlignment = Alignment.Center
-
     ) {
         Text(text = "Error during update", color = NewsTheme.colorScheme.onError)
     }
 }
 
-@Suppress("UnusedParameter")
+@Suppress("UNUSED_PARAMETER")
 @Composable
 private fun ProgressIndicator(state: State.Loading) {
     Box(
@@ -133,7 +132,9 @@ internal fun Article(
                 style = NewsTheme.typography.headlineMedium,
                 maxLines = 1
             )
+
             Spacer(modifier = Modifier.size(4.dp))
+
             Text(
                 text = article.description,
                 style = NewsTheme.typography.bodyMedium,
@@ -151,29 +152,26 @@ private class ArticlePreviewProvider : PreviewParameterProvider<ArticleUI> {
             "Android Studio Iguana is Stable!",
             "New stable version on Android IDE has been realized",
             imageUrl = null,
-            url = "",
+            url = ""
         ),
-
         ArticleUI(
             2,
             "Gemini 1.5 Release!",
             "Upgraded version of Google AI is available",
             imageUrl = null,
-            url = "",
+            url = ""
         ),
-
         ArticleUI(
             3,
             "Shape animations (10 min)",
             "How to use shape transform animations in Compose",
             imageUrl = null,
-            url = "",
-        ),
+            url = ""
+        )
     )
 }
 
 private class ArticlesPreviewProvider : PreviewParameterProvider<List<ArticleUI>> {
-
     private val articleProvider = ArticlePreviewProvider()
 
     override val values = sequenceOf(

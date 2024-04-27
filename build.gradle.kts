@@ -52,3 +52,4 @@ allprojects.onEach { project ->
         }
     }
 }
+

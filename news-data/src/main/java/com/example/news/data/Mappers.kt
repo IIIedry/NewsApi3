@@ -1,10 +1,10 @@
 package com.example.news.data
 
 import com.example.database.models.ArticleDBO
+import com.example.database.models.SourceDBO
 import com.example.news.data.model.Article
 import com.example.news.data.model.Source
 import com.example.newsapi.models.ArticleDTO
-import com.example.database.models.Source as SourceDBO
 
 internal fun ArticleDBO.toArticle(): Article {
     return Article(
